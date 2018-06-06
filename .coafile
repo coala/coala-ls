@@ -1,5 +1,5 @@
 [Default]
-files = *.py, coala_langserver/*.py, tests/**/*.py
+files = *.py, coalals/**/*.py, tests/**/*.py
 
 max_line_length = 79
 use_spaces = True
