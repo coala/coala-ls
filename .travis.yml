@@ -26,12 +26,6 @@ before_install:
       sleep 3;
     fi
 
-  - cd ./vscode-client
-  - npm install
-  - mkdir ./out
-  - npm run vscode:prepublish
-  - cd - > /dev/null
-
   - printf '%s\n'
            "$(cat test-requirements.txt requirements.txt)"
            > requirements.txt
@@ -43,10 +37,6 @@ script:
   # Server side tests.
   - coverage run $(which behave) ./tests/server.features
   - coverage run -a -m unittest discover -s tests
-  # Frontend tests.
-#  - cd ./vscode-client
-#  - npm test
-#  - cd - > /dev/null
 
 notifications:
   email: false
