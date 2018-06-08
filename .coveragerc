@@ -2,7 +2,7 @@
 branch = True
 source = .
 omit =
-    coala-langserver.py
+    coalals/__main__.py
     tests/*
 
 [report]
