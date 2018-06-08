@@ -44,8 +44,7 @@ script:
   # https://github.com/coala/coala-bears/issues/1037
   - sed -i.bak '/bears = GitCommitBear/d' .coafile
   # Server side tests.
-  - coverage run $(which behave) ./tests/server.features
-  - coverage run -a -m unittest discover -s tests
+  - py.test --cov-report term --cov=coalals
 
 notifications:
   email: false
