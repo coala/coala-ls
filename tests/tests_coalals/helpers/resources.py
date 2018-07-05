@@ -23,6 +23,8 @@ sample_code_files = {
     },
 }
 
+sample_fixes_file = url('fixes.json')
+
 
 def count_diagnostics(diagnostics):
     diagnostics_count = 0
