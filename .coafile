@@ -1,5 +1,5 @@
 [Default]
-files = *.py, coala_langserver/*.py, tests/**/*.py
+files = *.py, coalals/**/*.py, tests/**/*.py
 
 max_line_length = 79
 use_spaces = True
@@ -14,9 +14,12 @@ language = python
 preferred_quotation = '
 
 [autopep8]
-bears = PEP8Bear, PycodestyleBear, PyDocStyleBear
-pydocstyle_ignore = D100, D101, D102, D103, D104, D107,
-  D200, D203, D205, D209, D212, D213, D400
+bears = PEP8Bear, PycodestyleBear
+
+[docstyle]
+bears = PyDocStyleBear
+ignore = tests/**/*.py
+pydocstyle_ignore = D100, D104, D200, D203, D204, D205, D212, D400, D403,
 
 [linelength]  # Sometimes autopep8 makes too long lines, need to check after!
 bears = LineLengthBear
