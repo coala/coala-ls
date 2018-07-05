@@ -93,3 +93,10 @@ def test_fileproxy_update(temporary_file):
 
     fileproxy.update([two, three])
     assert fileproxy._changes_history == [one, two, three]
+
+
+def test_fileproxy_get_disk_contents(temporary_file):
+    proxy = FileProxy(temporary_file)
+
+    contents = proxy.get_disk_contents()
+    assert contents == 'coala'

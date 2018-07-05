@@ -167,6 +167,16 @@ class FileProxy:
 
         return False
 
+    def get_disk_contents(self):
+        """
+        :return:
+            Returns the contents of a copy of the file
+            on the disk. It might not be in sync with
+            the editor version of the file.
+        """
+        with open(self.filename) as disk:
+            return disk.read()
+
     def contents(self):
         """
         :return:
