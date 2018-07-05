@@ -4,6 +4,7 @@ from jsonrpc.endpoint import Endpoint
 from jsonrpc.dispatchers import MethodDispatcher
 from jsonrpc.streams import JsonRpcStreamWriter, JsonRpcStreamReader
 from .results.diagnostics import Diagnostics
+from .results.fixes import coalaPatch, TextEdits
 from .interface import coalaWrapper
 from .utils.files import UriUtils, FileProxy, FileProxyMap
 
@@ -70,6 +71,7 @@ class LangServer(MethodDispatcher):
         self._capabilities = {
             'capabilities': {
                 'textDocumentSync': 1,
+                'documentFormattingProvider': 1,
             }
         }
 
@@ -232,6 +234,45 @@ class LangServer(MethodDispatcher):
         # i.e resolve diffs and construct the text, the diff
         # handling mechanism should be handled in FileProxy's
         # update method
+
+    def m_text_document__formatting(self, **params):
+        """
+        textDocument/formatting is a request. A formatting
+        request is raised from the editor. The server should
+        intend to fix all the indentation and spacing like
+        issues.
+
+        :param params:
+            The parameters passed during the request.
+        """
+        logger.info('Responding to formatting request')
+
+        text_document = params['textDocument']
+        filename = self._text_document_to_name(text_document)
+
+        # If the file does not exist in the proxy map
+        # discard the request, it should didOpen first
+        proxy = self._proxy_map.get(filename)
+        if proxy is None:
+            return
+
+        def _internal_formatter():
+            result = self._coala.p_analyse_file(proxy, force=False)
+            if result is False:  # pragma: no cover
+                logging.info('Failed analysis on %s', proxy.filename)
+                return
+
+            # wait for returns
+            coala_json = result.result()
+            fixes = Diagnostics.from_coala_json(coala_json)
+
+            # send diagnostic warnings found during analysis
+            self.send_diagnostics(proxy.filename, fixes)
+
+            text_edits = fixes.fixes_to_text_edits(proxy)
+            return list(text_edits.get())
+
+        return _internal_formatter
 
     def m_text_document__did_close(self, **params):
         """

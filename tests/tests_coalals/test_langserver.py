@@ -14,8 +14,28 @@ from helpers.dummies import (DummyDiagnostics, DummyProcessPoolExecutor,
 
 @pytest.fixture
 def file_langserver(monkeypatch):
+    DummyProcessPoolExecutor.on_submit = None
+
     with monkeypatch.context() as patch:
         patch.setattr('coalals.concurrency.ProcessPoolExecutor',
+                      DummyProcessPoolExecutor)
+
+        file = TemporaryFile()
+        langserver = LangServer(file, file)
+
+        return (file, langserver)
+
+
+@pytest.fixture
+def file_langserver_deep(monkeypatch):
+    DummyProcessPoolExecutor.on_submit = None
+
+    with monkeypatch.context() as patch:
+        patch.setattr('coalals.concurrency.ProcessPoolExecutor',
+                      DummyProcessPoolExecutor)
+        # concurrent.futures maintains the same API for PoolExecutor's
+        # hence, reusing DummyProcessPoolExecutor for ThreadPoolExecutor
+        patch.setattr('jsonrpc.endpoint.futures.ThreadPoolExecutor',
                       DummyProcessPoolExecutor)
 
         file = TemporaryFile()
@@ -46,7 +66,9 @@ def verify_docsync_respone(verify_response):
     def _internal(file, langserver):
         def consumer(file, response, passed):
             assert response is not None
-            assert response['result']['capabilities']['textDocumentSync'] == 1
+            capabilities = response['result']['capabilities']
+            assert capabilities['textDocumentSync'] == 1
+            assert capabilities['documentFormattingProvider'] == 1
 
             file.close()
             passed[0] = True
@@ -446,6 +468,53 @@ def test_langserver_did_save_failed_job(monkeypatch):
 
         langserver._endpoint.consume(request)
         assert_callback_not_called(file)
+
+
+@pytest.mark.parametrize('will_respond', [True, False])
+def test_langserver_document_formatting(will_respond,
+                                        file_langserver_deep,
+                                        verify_response):
+    file, langserver = file_langserver_deep
+
+    code_sample_path = url('failure3.py', True)
+    code_sample_name = str(code_sample_path)
+    proxy = FileProxy(code_sample_name)
+
+    # it should fail if the file is not open
+    # in the editor by extension is not in the
+    # proxy map.
+    if will_respond is True:
+        langserver._proxy_map.add(proxy)
+
+    request = {
+        'method': 'textDocument/formatting',
+        'params': {
+            'textDocument': {
+                'uri': code_sample_path.as_uri(),
+            },
+
+            'options': {
+                'tabSize': 4,
+                'insertSpaces': True,
+            },
+        },
+        'jsonrpc': '2.0',
+        'id': 1244,
+    }
+
+    langserver._endpoint.consume(request)
+
+    def consumer(file, response, passed):
+        if will_respond is False:
+            passed[0] = True
+            return
+
+        elif 'id' in response:
+            for text_edit in response['result']:
+                assert text_edit['newText']
+            passed[0] = True
+
+    verify_response(file, langserver, consumer)
 
 
 @pytest.mark.parametrize('name,add', [
