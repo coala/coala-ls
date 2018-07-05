@@ -1,4 +1,7 @@
 from json import loads
+from coalals.results.fixes import (coalaPatch,
+                                   TextEdit,
+                                   TextEdits)
 
 import logging
 logger = logging.getLogger(__name__)
@@ -71,9 +74,9 @@ class Diagnostics:
                 # and also figure out a way to resolve
                 # overlapping patches.
 
-                # for file, diff in warning['diffs'].items():
-                #   for parsed_diff in parse_patch(diff):
-                #     pass
+                if warning['diffs'] is not None:
+                    for file, diff in warning['diffs'].items():
+                        fixes.append((file, coalaPatch(diff)))
 
         logger.debug(warnings)
         return cls(warnings, fixes=fixes)
@@ -89,6 +92,51 @@ class Diagnostics:
         """
         self._warnings = warnings
         self._fixes = fixes
+
+    def _filter_fixes(self, fixes):
+        """
+        Filter and sort the fixes in some way so
+        the overlapping patch issues can be reduced.
+
+        :param fixes:
+            The list of fixes, instances of coalaPatch.
+        """
+        return reversed(fixes)
+
+    def fixes_to_text_edits(self, proxy):
+        """
+        Apply all the possible changes to the file,
+        then creates massive diff and converts it into
+        TextEdits compatible with Language Server.
+
+        :param proxy:
+            The proxy of the file that needs to be worked
+            upon.
+        """
+        # TODO Update to use the in-memory copy of
+        # the file if and when coalaWrapper is
+        # updated to use it too.
+        old = content = proxy.get_disk_contents()
+        sel_file = proxy.filename
+
+        passed, failed = 0, 0
+        for ths_file, fix in self._filter_fixes(self._fixes):
+            if sel_file is None or ths_file == sel_file:
+                try:
+                    content = fix.apply(content)
+                    passed += 1
+                except AssertionError:
+                    failed += 1
+                    continue
+
+        logger.info('Applied %s patches on %s',
+                    passed, sel_file or ths_file)
+
+        logger.info('Skipped %s patches on %s',
+                    failed, sel_file or ths_file)
+
+        full_repl = TextEdit.replace_all(old, content)
+        return TextEdits([full_repl])
 
     def warnings(self):
         """
