@@ -1,7 +1,7 @@
 import pytest
 from json import load, dumps
 
-from coalals.results import Diagnostics
+from coalals.results.diagnostics import Diagnostics
 from helpers.resources import sample_diagnostics
 
 

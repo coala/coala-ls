@@ -3,7 +3,7 @@ import sys
 from jsonrpc.endpoint import Endpoint
 from jsonrpc.dispatchers import MethodDispatcher
 from jsonrpc.streams import JsonRpcStreamWriter, JsonRpcStreamReader
-from .results import Diagnostics
+from .results.diagnostics import Diagnostics
 from .interface import coalaWrapper
 from .utils.files import UriUtils, FileProxy, FileProxyMap
 
