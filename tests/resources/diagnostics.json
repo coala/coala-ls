@@ -1,0 +1,421 @@
+{
+  "samples": [
+    {
+      "coala": {
+        "results": {
+          "all": [],
+          "all.autopep8": [
+            {
+              "additional_info": "",
+              "affected_code": [
+                {
+                  "end": {
+                    "column": 5,
+                    "file": "/home/ksdme/Work/gsoc/coala-ls/tests/resources/failure2.py",
+                    "line": 2
+                  },
+                  "file": "/home/ksdme/Work/gsoc/coala-ls/tests/resources/failure2.py",
+                  "start": {
+                    "column": 5,
+                    "file": "/home/ksdme/Work/gsoc/coala-ls/tests/resources/failure2.py",
+                    "line": 2
+                  }
+                }
+              ],
+              "aspect": "NoneType",
+              "confidence": 100,
+              "debug_msg": "",
+              "diffs": null,
+              "id": 281466453796115535461439422208028175619,
+              "message": "E128 continuation line under-indented for visual indent",
+              "message_arguments": {},
+              "message_base": "E128 continuation line under-indented for visual indent",
+              "origin": "PycodestyleBear (E128)",
+              "severity": 1
+            },
+            {
+              "additional_info": "",
+              "affected_code": [
+                {
+                  "end": {
+                    "column": 1,
+                    "file": "/home/ksdme/Work/gsoc/coala-ls/tests/resources/failure2.py",
+                    "line": 3
+                  },
+                  "file": "/home/ksdme/Work/gsoc/coala-ls/tests/resources/failure2.py",
+                  "start": {
+                    "column": 1,
+                    "file": "/home/ksdme/Work/gsoc/coala-ls/tests/resources/failure2.py",
+                    "line": 3
+                  }
+                }
+              ],
+              "aspect": "NoneType",
+              "confidence": 100,
+              "debug_msg": "",
+              "diffs": null,
+              "id": 86549142496323668488131828852516756744,
+              "message": "E901 TokenError: EOF in multi-line statement",
+              "message_arguments": {},
+              "message_base": "E901 TokenError: EOF in multi-line statement",
+              "origin": "PycodestyleBear (E901)",
+              "severity": 1
+            }
+          ],
+          "all.linelength": [],
+          "all.python": [],
+          "all.yml": [],
+          "cli": []
+        }
+      },
+      "langserver": [
+        {
+          "severity": 2,
+          "range": {
+            "start": {
+              "line": 1,
+              "character": 4
+            },
+            "end": {
+              "line": 1,
+              "character": 4
+            }
+          },
+          "source": "coala",
+          "message": "[all.autopep8] PycodestyleBear (E128): E128 continuation line under-indented for visual indent"
+        },
+        {
+          "severity": 2,
+          "range": {
+            "start": {
+              "line": 2,
+              "character": 0
+            },
+            "end": {
+              "line": 2,
+              "character": 0
+            }
+          },
+          "source": "coala",
+          "message": "[all.autopep8] PycodestyleBear (E901): E901 TokenError: EOF in multi-line statement"
+        }
+      ]
+    },
+    {
+      "coala": {
+        "results": {
+          "all": [],
+          "all.autopep8": [
+            {
+              "additional_info": "",
+              "affected_code": [
+                {
+                  "end": {
+                    "column": null,
+                    "file": "/home/ksdme/Work/gsoc/coala-ls/tests/resources/failure2.py",
+                    "line": 2
+                  },
+                  "file": "/home/ksdme/Work/gsoc/coala-ls/tests/resources/failure2.py",
+                  "start": {
+                    "column": null,
+                    "file": "/home/ksdme/Work/gsoc/coala-ls/tests/resources/failure2.py",
+                    "line": 2
+                  }
+                }
+              ],
+              "aspect": "NoneType",
+              "confidence": 100,
+              "debug_msg": "",
+              "diffs": null,
+              "id": 281466453796115535461439422208028175619,
+              "message": "E128 continuation line under-indented for visual indent",
+              "message_arguments": {},
+              "message_base": "E128 continuation line under-indented for visual indent",
+              "origin": "PycodestyleBear (E128)",
+              "severity": 1
+            },
+            {
+              "additional_info": "",
+              "affected_code": [
+                {
+                  "end": {
+                    "column": 1,
+                    "file": "/home/ksdme/Work/gsoc/coala-ls/tests/resources/failure2.py",
+                    "line": 3
+                  },
+                  "file": "/home/ksdme/Work/gsoc/coala-ls/tests/resources/failure2.py",
+                  "start": {
+                    "column": 1,
+                    "file": "/home/ksdme/Work/gsoc/coala-ls/tests/resources/failure2.py",
+                    "line": 3
+                  }
+                }
+              ],
+              "aspect": "NoneType",
+              "confidence": 100,
+              "debug_msg": "",
+              "diffs": null,
+              "id": 86549142496323668488131828852516756744,
+              "message": "E901 TokenError: EOF in multi-line statement",
+              "message_arguments": {},
+              "message_base": "E901 TokenError: EOF in multi-line statement",
+              "origin": "PycodestyleBear (E901)",
+              "severity": 1
+            }
+          ],
+          "all.linelength": [],
+          "all.python": [],
+          "all.yml": [],
+          "cli": []
+        }
+      },
+      "langserver": [
+        {
+          "severity": 2,
+          "range": {
+            "start": {
+              "line": 1,
+              "character": 0
+            },
+            "end": {
+              "line": 2,
+              "character": 0
+            }
+          },
+          "source": "coala",
+          "message": "[all.autopep8] PycodestyleBear (E128): E128 continuation line under-indented for visual indent"
+        },
+        {
+          "severity": 2,
+          "range": {
+            "start": {
+              "line": 2,
+              "character": 0
+            },
+            "end": {
+              "line": 2,
+              "character": 0
+            }
+          },
+          "source": "coala",
+          "message": "[all.autopep8] PycodestyleBear (E901): E901 TokenError: EOF in multi-line statement"
+        }
+      ]
+    }
+  ],
+  "fixes": [
+    {
+      "results": {
+        "autopep8": [
+          {
+            "additional_info": "",
+            "affected_code": [
+              {
+                "end": {
+                  "column": null,
+                  "file": "/home/ksdme/Work/gsoc/coala-ls/tests/resources/failure3.py",
+                  "line": 2
+                },
+                "file": "/home/ksdme/Work/gsoc/coala-ls/tests/resources/failure3.py",
+                "start": {
+                  "column": null,
+                  "file": "/home/ksdme/Work/gsoc/coala-ls/tests/resources/failure3.py",
+                  "line": 2
+                }
+              }
+            ],
+            "aspect": "NoneType",
+            "confidence": 100,
+            "debug_msg": "",
+            "diffs": {
+              "/home/ksdme/Work/gsoc/coala-ls/tests/resources/failure3.py": "--- \n+++ \n@@ -1,5 +1,6 @@\n def test_function():\n-     hello = \"Hey\"\n+    hello = \"Hey\"\n+\n \n if True:\n      pass\n"
+            },
+            "id": 114043415368839830363592685540474798853,
+            "message": "The code does not comply to PEP8.",
+            "message_arguments": {},
+            "message_base": "The code does not comply to PEP8.",
+            "origin": "PEP8Bear",
+            "severity": 1
+          },
+          {
+            "additional_info": "",
+            "affected_code": [
+              {
+                "end": {
+                  "column": null,
+                  "file": "/home/ksdme/Work/gsoc/coala-ls/tests/resources/failure3.py",
+                  "line": 6
+                },
+                "file": "/home/ksdme/Work/gsoc/coala-ls/tests/resources/failure3.py",
+                "start": {
+                  "column": null,
+                  "file": "/home/ksdme/Work/gsoc/coala-ls/tests/resources/failure3.py",
+                  "line": 5
+                }
+              }
+            ],
+            "aspect": "NoneType",
+            "confidence": 100,
+            "debug_msg": "",
+            "diffs": {
+              "/home/ksdme/Work/gsoc/coala-ls/tests/resources/failure3.py": "--- \n+++ \n@@ -2,5 +2,4 @@\n      hello = \"Hey\"\n \n if True:\n-     pass\n-\n+    pass\n"
+            },
+            "id": 248965969153426220505454526877482618366,
+            "message": "The code does not comply to PEP8.",
+            "message_arguments": {},
+            "message_base": "The code does not comply to PEP8.",
+            "origin": "PEP8Bear",
+            "severity": 1
+          },
+          {
+            "additional_info": "",
+            "affected_code": [
+              {
+                "end": {
+                  "column": 6,
+                  "file": "/home/ksdme/Work/gsoc/coala-ls/tests/resources/failure3.py",
+                  "line": 2
+                },
+                "file": "/home/ksdme/Work/gsoc/coala-ls/tests/resources/failure3.py",
+                "start": {
+                  "column": 6,
+                  "file": "/home/ksdme/Work/gsoc/coala-ls/tests/resources/failure3.py",
+                  "line": 2
+                }
+              }
+            ],
+            "aspect": "NoneType",
+            "confidence": 100,
+            "debug_msg": "",
+            "diffs": null,
+            "id": 254772311010356611066691872403954759470,
+            "message": "E111 indentation is not a multiple of four",
+            "message_arguments": {},
+            "message_base": "E111 indentation is not a multiple of four",
+            "origin": "PycodestyleBear (E111)",
+            "severity": 1
+          },
+          {
+            "additional_info": "",
+            "affected_code": [
+              {
+                "end": {
+                  "column": 1,
+                  "file": "/home/ksdme/Work/gsoc/coala-ls/tests/resources/failure3.py",
+                  "line": 4
+                },
+                "file": "/home/ksdme/Work/gsoc/coala-ls/tests/resources/failure3.py",
+                "start": {
+                  "column": 1,
+                  "file": "/home/ksdme/Work/gsoc/coala-ls/tests/resources/failure3.py",
+                  "line": 4
+                }
+              }
+            ],
+            "aspect": "NoneType",
+            "confidence": 100,
+            "debug_msg": "",
+            "diffs": null,
+            "id": 178811740477814076025362794491165347773,
+            "message": "E305 expected 2 blank lines after class or function definition, found 1",
+            "message_arguments": {},
+            "message_base": "E305 expected 2 blank lines after class or function definition, found 1",
+            "origin": "PycodestyleBear (E305)",
+            "severity": 1
+          },
+          {
+            "additional_info": "",
+            "affected_code": [
+              {
+                "end": {
+                  "column": 6,
+                  "file": "/home/ksdme/Work/gsoc/coala-ls/tests/resources/failure3.py",
+                  "line": 5
+                },
+                "file": "/home/ksdme/Work/gsoc/coala-ls/tests/resources/failure3.py",
+                "start": {
+                  "column": 6,
+                  "file": "/home/ksdme/Work/gsoc/coala-ls/tests/resources/failure3.py",
+                  "line": 5
+                }
+              }
+            ],
+            "aspect": "NoneType",
+            "confidence": 100,
+            "debug_msg": "",
+            "diffs": null,
+            "id": 61531538508211120440011129259809842309,
+            "message": "E111 indentation is not a multiple of four",
+            "message_arguments": {},
+            "message_base": "E111 indentation is not a multiple of four",
+            "origin": "PycodestyleBear (E111)",
+            "severity": 1
+          },
+          {
+            "additional_info": "",
+            "affected_code": [
+              {
+                "end": {
+                  "column": 1,
+                  "file": "/home/ksdme/Work/gsoc/coala-ls/tests/resources/failure3.py",
+                  "line": 6
+                },
+                "file": "/home/ksdme/Work/gsoc/coala-ls/tests/resources/failure3.py",
+                "start": {
+                  "column": 1,
+                  "file": "/home/ksdme/Work/gsoc/coala-ls/tests/resources/failure3.py",
+                  "line": 6
+                }
+              }
+            ],
+            "aspect": "NoneType",
+            "confidence": 100,
+            "debug_msg": "",
+            "diffs": null,
+            "id": 87251029903777560447759498262381685728,
+            "message": "W391 blank line at end of file",
+            "message_arguments": {},
+            "message_base": "W391 blank line at end of file",
+            "origin": "PycodestyleBear (W391)",
+            "severity": 1
+          }
+        ],
+        "cli": [],
+        "linelength": [],
+        "python": [
+          {
+            "additional_info": "",
+            "affected_code": [
+              {
+                "end": {
+                  "column": null,
+                  "file": "/home/ksdme/Work/gsoc/coala-ls/tests/resources/failure3.py",
+                  "line": 2
+                },
+                "file": "/home/ksdme/Work/gsoc/coala-ls/tests/resources/failure3.py",
+                "start": {
+                  "column": null,
+                  "file": "/home/ksdme/Work/gsoc/coala-ls/tests/resources/failure3.py",
+                  "line": 2
+                }
+              }
+            ],
+            "aspect": "NoneType",
+            "confidence": 100,
+            "debug_msg": "",
+            "diffs": {
+              "/home/ksdme/Work/gsoc/coala-ls/tests/resources/failure3.py": "--- \n+++ \n@@ -1,5 +1,5 @@\n def test_function():\n-     hello = \"Hey\"\n+     hello = 'Hey'\n \n if True:\n      pass\n"
+            },
+            "id": 279859262526669763135858265098078150424,
+            "message": "You do not use the preferred quotation marks.",
+            "message_arguments": {},
+            "message_base": "You do not use the preferred quotation marks.",
+            "origin": "QuotesBear",
+            "severity": 1
+          }
+        ],
+        "yml": []
+      }
+    }
+  ]
+}

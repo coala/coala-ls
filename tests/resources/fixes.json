@@ -1,0 +1,14 @@
+{
+  "diffs": [
+    {
+      "diff": "--- \n+++ \n@@ -1,5 +1,5 @@\n def test_function():\n-     hello = \"Hey\"\n+     hello = 'Hey'\n \n if True:\n      pass\n",
+      "original": "def test_function():\n     hello = \"Hey\"\n\nif True:\n     pass\n\n",
+      "patched": "def test_function():\n     hello = 'Hey'\n\nif True:\n     pass\n\n"
+    },
+    {
+      "diff": "--- \n+++ \n@@ -1,5 +1,5 @@\n def test_function():\n-     hello = \"Hey\"\n+     hello = 'Hey!'\n \n if True:\n      pass\n",
+      "original": "def test_function():\n     hello = \"Hey\"\n\nif True:\n     pass\n\n",
+      "patched": "def test_function():\n     hello = 'Hey!'\n\nif True:\n     pass\n\n"
+    }
+  ]
+}
