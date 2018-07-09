@@ -332,3 +332,40 @@ class LangServer(MethodDispatcher):
         self._endpoint.notify(
             'textDocument/publishDiagnostics',
             params=params)
+
+    def send_show_message_req(self, message_type, message, actions):
+        """
+        Send a showMessage request to the editor, this
+        can be useful for showing a dialog and getting
+        some user choice or action back.
+        (https://bit.ly/2J7TjX9)
+
+        :param message_type:
+            The type of message/severity of the dialog
+            in question. It can range from 1 - 4. Refer
+            to the LS docs for more detail.
+        :param message:
+            The message to display while providing the
+            choice.
+        :param actions:
+            A list/iterable of strings containing the
+            the various options to choose from.
+        :return:
+            Returns a Future that will be resolved with
+            error or result when the user chooses an
+            action or cancels it.
+        """
+        if message_type > 4 or message_type < 1:
+            message_type = 4
+
+        params = {
+            'type': int(message_type),
+            'message': message,
+            'actions': list(map(lambda l: {'title': l, }, actions)),
+        }
+
+        req_future = self._endpoint.request(
+                        'window/showMessageRequest',
+                        params=params)
+
+        return req_future

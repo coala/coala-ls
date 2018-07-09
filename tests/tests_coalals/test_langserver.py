@@ -136,6 +136,37 @@ def test_send_diagnostics(file_langserver, verify_publish_respone):
     verify_publish_respone(file, langserver, 0)
 
 
+@pytest.mark.parametrize('msg_type', [1, 5])
+def test_send_show_message_req(file_langserver, verify_response, msg_type):
+    file, langserver = file_langserver
+
+    future = langserver.send_show_message_req(
+                msg_type,
+                'This is not a message.',
+                ('Okay', 'Yo!'))
+
+    def _responder(file, request, passed, **kargs):
+        msg_id = request['id']
+
+        langserver._endpoint.consume({
+            'id': msg_id,
+            'result': {'title': 'Yo!', },
+            'jsonrpc': '2.0',
+        })
+
+        # now wait for the future to be resolved with
+        # the result of the selection
+        result = future.result()
+
+        assert result is not None
+        assert result['title'] == 'Yo!'
+
+        file.close()
+        passed[0] = True
+
+    verify_response(file, langserver, _responder)
+
+
 def test_lanserver_shutdown(file_langserver):
     file, langserver = file_langserver
     langserver.m_shutdown()
