@@ -20,8 +20,10 @@ with `max_jobs = 1`.
 | initialize                                   | 0.03 sec  | 0.019 sec     |
 | `resources/css/404.css` textDocument/didOpen | 7.18 sec  |               |
 | `resources/css/404.css` textDocument/didSave | 5.32 sec  | 11.36 sec     |
+| `resources/css/404.css` formatting           | 5.98 sec  |               |
 | `index.html` textDocument/didOpen            | 10.16 sec |               |
 | `index.html` textDocument/didSave            | 8.33 sec  | 10.95 sec     |
+| `index.html` textDocument/formatting         | 8.86 sec  |               |
 
 
 Response time metrics in seconds with `max_jobs = 2`. coala-vs-code does
@@ -34,6 +36,8 @@ not support any other modes other than a default `max_jobs = 1` equivalent.
 | J1  | `index.html` textDocument/didOpen            | 11.65 sec |
 | J2  | `resources/css/404.css` textDocument/didSave | 4.22 sec  |
 | J2  | `index.html` textDocument/didSave            | 8.70 sec  |
+| J3  | `resources/css/404.css` formatting           | 5.85 sec  |
+| J3  | `index.html` textDocument/formatting         | 8.51 sec  |
 
 
 Response time metrics in seconds with `max_jobs = 3`.
@@ -46,6 +50,9 @@ Response time metrics in seconds with `max_jobs = 3`.
 | J2  | `resources/css/404.css` textDocument/didSave        | 5.12 sec  |
 | J2  | `resources/css/style.css` textDocument/didSave      | 4.57 sec  |
 | J2  | `index.html` textDocument/didSave                   | 8.65 sec  |
+| J3  | `resources/css/404.css` textDocument/formatting     | 6.06 sec  |
+| J3  | `resources/css/style.css` textDocument/formatting   | 8.61 sec  |
+| J3  | `index.html` textDocument/formatting                | 8.75 sec  |
 
 ### Graphical Representation
-![Graph](./docs/images/perf-phase-1.png)
+![Graph](./docs/images/perf-phase-2.png)
