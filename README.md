@@ -11,7 +11,7 @@ A visual studio code plugin working via [Language Server Protocol (LSP)](https:/
 
 ## Setting up your dev environment, coding, and debugging
 
-You'll need python version 3.5 or greater, run `pip3 install -r requirements.txt` to install the requirements, and run `python3 langserver-python.py --mode=tcp --addr=2087` to start a local languager server listening at port 2087.
+You'll need python version 3.5 or greater, run `pip3 install -r requirements.txt` to install the requirements, and run `python3 coala-langserver.py --mode=tcp --addr=2087` to start a local languager server listening at port 2087.
 
 Then you should update the `./vscode-client/src/extension.ts` to make client in TCP mode.
 
